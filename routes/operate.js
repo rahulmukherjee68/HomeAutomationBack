@@ -28,7 +28,7 @@ router.post('/', (req, res, next) => {
 
 
             const filter = { _id: req.body._id };
-            const update = { $set: { status: req.body.status, lastPowerOn: lastPowerOn } };
+            const update = { $set: { status: 1, lastPowerOn: lastPowerOn } };
 
             DeviceModel.findOneAndUpdate(filter, update, { new: true, useFindAndModify: false }).then(doc => {
                 res.status(200).json({ status: true, doc: doc });
@@ -49,7 +49,7 @@ router.post('/', (req, res, next) => {
                 var powerConsumption=doc[0].powerConsumption+(watt*hours); //total power conspuntion
 
                 const filter = { _id: req.body._id };
-                const update = { $set: { status: req.body.status, lastPowerOff: lastPowerOff,powerConsumption:powerConsumption } };
+                const update = { $set: { status: 0, lastPowerOff: lastPowerOff,powerConsumption:powerConsumption } };
 
                 DeviceModel.findOneAndUpdate(filter, update, { new: true, useFindAndModify: false }).then(doc => {
                     res.status(200).json({ status: true, doc: doc });

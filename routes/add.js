@@ -23,7 +23,7 @@ async function findDeviceAndAdd(myobj, res) {
                 });
 
             }).catch(err => {
-                res.status(404).json({
+                res.status(400).json({
                     status: false,
                     message: "Data Not Saved" + err
                 });
@@ -35,7 +35,7 @@ async function findDeviceAndAdd(myobj, res) {
                 message: "Duplicate Devices can't be entered"
             });
         }
-    }).catch(err => { res.status(404).json({ status: false, message: err }) });
+    }).catch(err => { res.status(400).json({ status: false, message: err }) });
 }
 
 
@@ -45,15 +45,14 @@ router.post('/', function (req, res, next) {
             _id: new mongoose.Types.ObjectId(),
             device: req.body.appName,
             room: req.body.appRoom,
-            watt:req.body.watt,
-            status: 0
+            watt:req.body.watt
         };
 
         findDeviceAndAdd(myobj, res);
 
     }
     catch (error) {
-        res.status(404).json({
+        res.status(400).json({
             status: false,
             message: "Error:- " + error
         });
