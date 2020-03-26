@@ -9,7 +9,7 @@ const deviceSchema = new mongoose.Schema({
     lastPowerOn:{type:Date, default: Date.now},
     lastPowerOff:{type:Date, default: Date.now},
     powerConsumption:{type:Number,default:0},
-    create_at: {type: Date, default: Date.now} 
+    created_at: {type: Date, default: Date.now} 
    
 });
 
