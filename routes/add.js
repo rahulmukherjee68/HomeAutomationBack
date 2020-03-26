@@ -7,7 +7,7 @@ const DeviceModel = require('../model/device');
 
 
 async function findDeviceAndAdd(myobj, res) {
-    const mob = await DeviceModel.findOne({ device: myobj.device,room:myobj.room }).then(doc => {
+    const mob = await DeviceModel.findOne({ device: myobj.device,room:myobj.room,watt:myobj.watt }).then(doc => {
         //.log(doc);
 
         if (doc == null) {
